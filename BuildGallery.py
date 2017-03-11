@@ -52,4 +52,21 @@ for gallery in galleryList:
     footer.close()
 #close jewelry.html
     gfile.close()
+
+#make static info pages
+staticList = ['about.html','index.html']
+for static in staticList:
+    header = open(webDir + '.header.html.template')
+    footer = open(webDir + '.footer.html.template')
+    content = open(webDir + '.' + static + '.template')
+    sFile = open(webDir + static, 'w')
+    sFile.write(header.read())
+    sFile.write(content.read())
+    sFile.write(footer.read())
+    sFile.close()
+    header.close()
+    footer.close()
+    content.close()
+
+
 #Make page for each image? 
