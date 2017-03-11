@@ -6,10 +6,11 @@ import os, shutil
 #have way to choose which gallery to build 
 #galleryList names are dependant on "img_gallery" directory name
 galleryList = ['necklace','bracelet','earring']
+webDir = os.path.join(os.path.expanduser('~'), 'RustyBearStudio')+'/'
 for gallery in galleryList:
-    galleryHtml = '/home/honuts/www/' + gallery + '.html'
-    galleryHtmlOld = '/home/honuts/www/.' + gallery + '.html.old'
-    galleryImg = '/home/honuts/www/img_' + gallery + '/'
+    galleryHtml = webDir + gallery + '.html'
+    galleryHtmlOld = webDir + gallery + '.html.old'
+    galleryImg = webDir + 'img_' + gallery + '/'
 
 #BACKUP jewelry.html to jewelry.html.old, maybe with date?
     if os.path.isfile(galleryHtml):
@@ -19,7 +20,7 @@ for gallery in galleryList:
     gfile = open(galleryHtml, 'w')
 
 #add boilerplate to top of jewelry.html from text file
-    header = open('/home/honuts/www/.header.html.template')
+    header = open(webDir + '.header.html.template')
     gfile.write(header.read())
     header.close()
 
@@ -46,7 +47,7 @@ for gallery in galleryList:
     gfile.write('</div>\n')
 
 #add boilerplate to bottom of jewelry.html from text file
-    footer = open('/home/honuts/www/.footer.html.template')
+    footer = open(webDir + '.footer.html.template')
     gfile.write(footer.read())
     footer.close()
 #close jewelry.html
